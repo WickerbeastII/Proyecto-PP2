@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
--- Host: localhost    Database: hola
+-- Host: localhost    Database: pp2
 -- ------------------------------------------------------
 -- Server version	8.0.33
 
@@ -16,25 +16,56 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `hola2`
+-- Table structure for table `perfies`
 --
 
-DROP TABLE IF EXISTS `hola2`;
+DROP TABLE IF EXISTS `perfies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `hola2` (
-  `num` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `perfies` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(50) NOT NULL,
+  `Apellidos` varchar(50) NOT NULL,
+  `DNI` varchar(50) NOT NULL,
+  `FechaNacimiento` date NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `id_usuario` FOREIGN KEY (`id`) REFERENCES `usuarios` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `hola2`
+-- Dumping data for table `perfies`
 --
 
-LOCK TABLES `hola2` WRITE;
-/*!40000 ALTER TABLE `hola2` DISABLE KEYS */;
-INSERT INTO `hola2` VALUES (12),(15);
-/*!40000 ALTER TABLE `hola2` ENABLE KEYS */;
+LOCK TABLES `perfies` WRITE;
+/*!40000 ALTER TABLE `perfies` DISABLE KEYS */;
+INSERT INTO `perfies` VALUES (1,'Pepito','Gallardo','99999','2023-07-03');
+/*!40000 ALTER TABLE `perfies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user` varchar(50) DEFAULT NULL,
+  `pass` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'pepito','1234');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -46,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-18 14:51:07
+-- Dump completed on 2023-07-03 14:24:30

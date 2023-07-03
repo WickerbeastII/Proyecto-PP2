@@ -11,13 +11,12 @@ function enviar(){
     
     $.ajax({
             type: "POST",
-            url: " ",                // post/login (user, pass)
+            url: "http://localhost:8081/login",                // post/login (user, pass)
             data: JSON.stringify(data),
             async: false,
             cache: false,                    
             success: function(res){
                 
-            
             },
             error:function(){                
                 alert("ocurrio una falla con el envio ");
@@ -26,8 +25,6 @@ function enviar(){
     
 }
 
-
-
 function registrar_usuario(){
 
     alert("registar usuario")      
@@ -35,7 +32,7 @@ function registrar_usuario(){
       
     $.ajax({
         type:"POST",
-        url:" ", //post/usuario (id,nombre/user/pass/rol) 
+        url:"http://localhost:8081/registrar", //post/usuario (id,nombre/user/pass/rol) 
         data: data,
         async: false,
         cache: false,                    
