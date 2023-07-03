@@ -20,7 +20,7 @@ public class UsersService {
         return usuarios;
     }
 
-    public Perfil login(String user, String pass){
+    public Usuario login(String user, String pass){
         Usuario usuario = getUser(user);
 
         if (usuario != null) {
@@ -31,10 +31,10 @@ public class UsersService {
             throw new Error("La contraseña no es correcta");
         }
 
-        Perfil perfil = getPerfil(usuario.getId());
+        // Perfil perfil = getPerfil(usuario.getId());
 
-        if (perfil != null) {
-            return perfil;
+        if (usuario != null) {
+            return usuario;
         }
 
         throw new Error("Perfil no encontrado");
@@ -50,9 +50,9 @@ public class UsersService {
         return null;
     }
 
-    private Perfil getPerfil(String userID){
+    private Perfil getPerfil(int userID){
         for (Perfil perfil: perfiles){
-            if (perfil.getUser_id().equals(userID)) {
+            if (perfil.getUser_id() == userID) {
                 return perfil;
             }
         }
