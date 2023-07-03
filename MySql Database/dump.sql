@@ -30,7 +30,7 @@ CREATE TABLE `perfies` (
   `FechaNacimiento` date NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `id_usuario` FOREIGN KEY (`id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `perfies` (
 
 LOCK TABLES `perfies` WRITE;
 /*!40000 ALTER TABLE `perfies` DISABLE KEYS */;
+INSERT INTO `perfies` VALUES (1,'Pepito','Gallardo','99999','2023-07-03');
 /*!40000 ALTER TABLE `perfies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-06 14:13:50
+-- Dump completed on 2023-07-03 14:24:30
