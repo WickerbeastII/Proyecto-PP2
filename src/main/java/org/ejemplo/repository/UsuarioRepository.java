@@ -26,19 +26,19 @@ public class UsuarioRepository {
 
     // metodo para obtener todos los usuarios
     public List<Usuario> getAll() {
-        String sql = "SELECT * FROM usuario;";
+        String sql = "SELECT * FROM usuarios;";
         return jdbcTemplate.query(sql, new UsuarioMapper());
     }
 
     public Usuario createUsuario(Usuario usuario) {
-        String sql = "INSERT INTO usuario (id, user, pass) VALUES (?,?,?);";
+        String sql = "INSERT INTO usuarios (user, pass) VALUES (?,?);";
 
-        jdbcTemplate.update(sql, usuario.getId(), usuario.getUser(), usuario.getPassword());
+        jdbcTemplate.update(sql, usuario.getUser(), usuario.getPassword());
         return usuario;
     }
 
     public Usuario updateUsuario(Usuario usuario) {
-        String sql = "UPDATE usuario SET Nombre = ?, Descripcion = ?, Fecha = ?, Stock = ?, Precio = ? WHERE Codigo = ?";
+        String sql = "UPDATE usuarios SET user = ?, pass = ? WHERE id = ?";
 
         jdbcTemplate.update(sql, usuario.getId(), usuario.getUser(), usuario.getPassword());
         return usuario;
@@ -46,7 +46,7 @@ public class UsuarioRepository {
 
     public void removeUsuario(int id) throws Exception {
         log.info("Eliminiando el Usuario {}", id);
-        String sql = "DELETE FROM perfiles WHERE Codigo = ?";
+        String sql = "DELETE FROM usuarios WHERE id = ?";
 
         int rf = jdbcTemplate.update(sql, id);
         if (rf > 0) {

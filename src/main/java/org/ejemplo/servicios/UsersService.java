@@ -1,10 +1,16 @@
 package org.ejemplo.servicios;
 
 import lombok.extern.slf4j.Slf4j;
-import org.ejemplo.modelos.LoginDTO;
+
+import org.ejemplo.Exceptions.LoginException;
 import org.ejemplo.modelos.Perfil;
 import org.ejemplo.modelos.Usuario;
+import org.ejemplo.modelos.DTO.Login;
+import org.ejemplo.repository.PerfilRepository;
+import org.ejemplo.repository.UsuarioRepository;
 import org.ejemplo.validations.UserValidations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,36 +19,55 @@ import java.util.List;
 @Service
 @Slf4j
 public class UsersService {
-    List<Usuario> usuarios = new ArrayList<>();
-    List<Perfil> perfiles = new ArrayList<>();
+    @Autowired //Utilizamos Auytowired para hacer inyeccion de dependencias por medio de springboot
+    UsuarioRepository usuarios;
+
+    @Autowired
+    PerfilRepository perfiles;
 
     public List<Usuario> retornarUsuarios(){
-        return usuarios;
+        return usuarios.getAll();
     }
 
-    public Usuario login(String user, String pass){
+    public Usuario login(String user, String pass) throws LoginException {
         Usuario usuario = getUser(user);
 
-        if (usuario != null) {
-            throw new Error("No se ha econtrado el usuario");
+        if (usuario == null) {
+            throw new LoginException(HttpStatus.UNAUTHORIZED, "Fallo al iniciar sesión", "No existe el usuario especificado");
         }
 
         if (!usuario.getPassword().equals(pass)) {
-            throw new Error("La contraseña no es correcta");
+            throw new LoginException(HttpStatus.UNAUTHORIZED, "Fallo al iniciar sesión", "Contraseña incorrecta");
         }
 
-        // Perfil perfil = getPerfil(usuario.getId());
-
-        if (usuario != null) {
-            return usuario;
-        }
-
-        throw new Error("Perfil no encontrado");
+        return usuario;
     }
 
+    public Usuario registrar(String nombre, String pass) throws LoginException {
+        
+        if (nombre == "") {
+            throw new LoginException(HttpStatus.UNAUTHORIZED, "Fallo al registrar", "El campo usuario esta vacio");
+        }
+
+        if (pass == "") {
+            throw new LoginException(HttpStatus.UNAUTHORIZED, "Fallo al registrar", "El campo contraseña esta vacio");
+        }
+        
+        Usuario usuario = getUser(nombre);
+
+        if (usuario != null) {
+            throw new LoginException(HttpStatus.UNAUTHORIZED, "Fallo al registrar", "El usuario ya existe");
+        }
+
+        Usuario nuevoUsuario = new Usuario();
+        nuevoUsuario.setUser(nombre);
+        nuevoUsuario.setPassword(pass);
+
+        return usuarios.createUsuario(nuevoUsuario);        
+    }
 
     private Usuario getUser(String userName){
-        for (Usuario usuario: usuarios){
+        for (Usuario usuario: usuarios.getAll()){
             if (usuario.getUser().equals(userName)){
                 return usuario;
             }
@@ -51,7 +76,7 @@ public class UsersService {
     }
 
     private Perfil getPerfil(int userID){
-        for (Perfil perfil: perfiles){
+        for (Perfil perfil: perfiles.getAll()){
             if (perfil.getUser_id() == userID) {
                 return perfil;
             }

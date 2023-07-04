@@ -38,7 +38,7 @@ public class PerfilRepository {
     }
 
     public Perfil updateProducto(Perfil perfil) {
-        String sql = "UPDATE perfiles SET Nombre = ?, Descripcion = ?, Fecha = ?, Stock = ?, Precio = ? WHERE Codigo = ?";
+        String sql = "UPDATE perfiles SET Nombre = ?, Apellidos = ?, DNI = ?, FechaNacimiento = ? WHERE id = ?";
 
         jdbcTemplate.update(sql, perfil.getNombre(), perfil.getApellido(), perfil.getDNI(), perfil.getFechaNacimiento(), perfil.getUser_id());
         return perfil;
@@ -46,7 +46,7 @@ public class PerfilRepository {
 
     public void removeProducto(int id) throws Exception {
         log.info("Eliminiando el producto {}", id);
-        String sql = "DELETE FROM perfiles WHERE Codigo = ?";
+        String sql = "DELETE FROM perfiles WHERE id = ?";
 
         int rf = jdbcTemplate.update(sql, id);
         if (rf > 0) {

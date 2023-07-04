@@ -1,38 +1,48 @@
 package org.ejemplo.controladores;
 
-import org.ejemplo.modelos.LoginDTO;
+import org.ejemplo.Exceptions.LoginException;
+import org.ejemplo.modelos.Usuario;
+import org.ejemplo.modelos.DTO.Login;
 import org.ejemplo.servicios.UsersService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
+@Slf4j
 public class UsuarioController {
-    public UsersService service = new UsersService();
+    @Autowired
+    public UsersService service;
 
-    @RequestMapping(value = "/login", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE}, method = RequestMethod.POST)
-    public @ResponseBody ResponseEntity<String> login(@RequestBody LoginDTO person) {
-        // try {
-        //     Perfil respuesta = service.login(usuario, pass);
-            
-        //     ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        //     String json = ow.writeValueAsString(respuesta);
+    @PostMapping(value = "/login", consumes = {"application/json"})
+    public ResponseEntity<String> login(@RequestBody Login loginData) {
+        try {
+            Usuario logedUser = service.login(loginData.getUsuario(), loginData.getPass());
+            return ResponseEntity.status(HttpStatus.OK).body("El usuario " + logedUser.getUser() + " ha iniciado correctamente sesión");
+        } catch (LoginException e) {
+            return ResponseEntity.status(e.getStatusCode()).body(String.format("%s \n %s", e.getMessage(), e.getCausa()));
+        } catch (Exception e) {
+            log.error("Error: ",e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ups!!! Algo salio mal, nuestro desarrolladores estan trabajando para solucionarlo");
+        }
+    }
 
-        //     return ResponseEntity.ok(json);
-        // } catch (Exception e) {
-        //     return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(e.getMessage());
-        // }
-
-        return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body("ok");
+    @PostMapping(value = "/register", consumes = {"application/json"})
+    public ResponseEntity<String> Registrar(@RequestBody Login registerData) {
+        try {
+            Usuario logedUser = service.registrar(registerData.getUsuario(), registerData.getPass());
+            return ResponseEntity.status(HttpStatus.CREATED).body("El usuario " + logedUser.getUser() + " se ha creado correctamente");
+        } catch (LoginException e) {
+            return ResponseEntity.status(e.getStatusCode()).body(String.format("%s \n %s", e.getMessage(), e.getCausa()));
+        } catch (Exception e) {
+            log.error("Error: ",e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ups!!! Algo salio mal, nuestro desarrolladores estan trabajando para solucionarlo");
+        }
     }
 }
