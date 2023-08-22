@@ -1,5 +1,7 @@
 package org.ejemplo.modelos.DTO;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +13,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Login {
-    private String user;
+public class Registro {
+    private String tipo;
+    private String email;
     private String password;
+    private String dni;
+    private String apellido;
+    private Date fechaNacimiento;
 }

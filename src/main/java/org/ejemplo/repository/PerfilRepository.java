@@ -30,21 +30,21 @@ public class PerfilRepository {
         return jdbcTemplate.query(sql, new PerfilMapper());
     }
 
-    public Perfil createProducto(Perfil perfil) {
-        String sql = "INSERT INTO perfiles (id, Nombre, Apelido, DNI, FechaNacimiento) VALUES (?,?,?,?,?);";
+    public Perfil createPerfil(Perfil perfil) {
+        String sql = "INSERT INTO perfiles (Nombre, Apellidos, DNI, FechaNacimiento) VALUES (?,?,?,?);";
 
-        jdbcTemplate.update(sql, perfil.getUser_id(), perfil.getNombre(), perfil.getApellido(), perfil.getDNI(), perfil.getFechaNacimiento());
+        jdbcTemplate.update(sql, perfil.getNombre(), perfil.getApellido(), perfil.getDNI(), perfil.getFechaNacimiento());
         return perfil;
     }
 
-    public Perfil updateProducto(Perfil perfil) {
+    public Perfil updatePerfil(Perfil perfil) {
         String sql = "UPDATE perfiles SET Nombre = ?, Apellidos = ?, DNI = ?, FechaNacimiento = ? WHERE id = ?";
 
         jdbcTemplate.update(sql, perfil.getNombre(), perfil.getApellido(), perfil.getDNI(), perfil.getFechaNacimiento(), perfil.getUser_id());
         return perfil;
     }
 
-    public void removeProducto(int id) throws Exception {
+    public void removePerfil(int id) throws Exception {
         log.info("Eliminiando el producto {}", id);
         String sql = "DELETE FROM perfiles WHERE id = ?";
 

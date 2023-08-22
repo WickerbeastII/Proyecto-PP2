@@ -31,16 +31,16 @@ public class UsuarioRepository {
     }
 
     public Usuario createUsuario(Usuario usuario) {
-        String sql = "INSERT INTO usuarios (user, pass) VALUES (?,?);";
+        String sql = "INSERT INTO usuarios (user, pass, tipo) VALUES (?,?,?);";
 
-        jdbcTemplate.update(sql, usuario.getUser(), usuario.getPassword());
+        jdbcTemplate.update(sql, usuario.getUser(), usuario.getPassword(), usuario.getTipo());
         return usuario;
     }
 
     public Usuario updateUsuario(Usuario usuario) {
-        String sql = "UPDATE usuarios SET user = ?, pass = ? WHERE id = ?";
+        String sql = "UPDATE usuarios SET user = ?, pass = ?, tipo = ? WHERE id = ?";
 
-        jdbcTemplate.update(sql, usuario.getId(), usuario.getUser(), usuario.getPassword());
+        jdbcTemplate.update(sql, usuario.getId(), usuario.getUser(), usuario.getTipo(), usuario.getPassword());
         return usuario;
     }
 
