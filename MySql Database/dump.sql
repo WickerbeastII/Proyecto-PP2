@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `perfies`
+-- Table structure for table `perfiles`
 --
 
-DROP TABLE IF EXISTS `perfies`;
+DROP TABLE IF EXISTS `perfiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `perfies` (
+CREATE TABLE `perfiles` (
   `id` int NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(50) NOT NULL,
   `Apellidos` varchar(50) NOT NULL,
@@ -30,17 +30,17 @@ CREATE TABLE `perfies` (
   `FechaNacimiento` date NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `id_usuario` FOREIGN KEY (`id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `perfies`
+-- Dumping data for table `perfiles`
 --
 
-LOCK TABLES `perfies` WRITE;
-/*!40000 ALTER TABLE `perfies` DISABLE KEYS */;
-INSERT INTO `perfies` VALUES (1,'Pepito','Gallardo','99999','2023-07-03');
-/*!40000 ALTER TABLE `perfies` ENABLE KEYS */;
+LOCK TABLES `perfiles` WRITE;
+/*!40000 ALTER TABLE `perfiles` DISABLE KEYS */;
+INSERT INTO `perfiles` VALUES (1,'Pepito','Gallardo','99999','2023-07-03'),(2,'exequiel.place@hotmail.com','place','12345678','2023-07-31');
+/*!40000 ALTER TABLE `perfiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -54,8 +54,9 @@ CREATE TABLE `usuarios` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user` varchar(50) DEFAULT NULL,
   `pass` varchar(50) DEFAULT NULL,
+  `tipo` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +65,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'pepito','1234'),(2,'flash','2020');
+INSERT INTO `usuarios` VALUES (1,'pepito','12345678',NULL),(2,'flash','20202020',NULL),(12,'exequiel.place@hotmail.com','12345678','1');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -77,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-04 15:33:34
+-- Dump completed on 2023-08-22 14:51:06
