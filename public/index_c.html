@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style/login.css">
+    </link>
+
+    <title>CapculeCorp | Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- <div id="container">   
+        <img src="images/Logo.png" alt="logo"  id="logo" width="70" height="70"> 
+        
+    -->
+
+    <div id="login_box">
+
+        <h2>INICIO DE SESION</h2>
+        <div>
+            <label for="" class="t_login">Usuario</label>
+            <input type="text" name="usser" id="usser" maxlength="20" title="Ingresa tu usuario" autocomplete="off"
+                required>
+        </div>
+        <div>
+            <label for="" class="t_login">contraseña</label>
+            <input type="password" name="pass" id="pass" maxlength="8" title="Ingresa tu contraseña" autocomplete="off"
+                required>
+        </div>
+
+        <div class="block_btn">
+            <button id="btn_registro" class="btn_accion" onclick="enviar()"> Aceptar </button>
+            <button type="button" class="btn_accion" onclick="location.href='regitroUsuario.html';"> Registrate! <b>aquí
+                </b> </button>
+
+        </div>
+
+
+        <div class="block_btn" style="margin: 20px;">
+
+            <a href="recuperarpass.html" class="button submit m-5" target="_blank">Olvidaste tu contraseña?</a>
+
+        </div>
+
+    </div>
+
+    <!-- </div> -->
+
+</body>
+
+</html>
+
+<script src="funciones.js "></script>

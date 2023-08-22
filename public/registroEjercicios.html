@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style/estilos_gym.css">     </link>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>CapculeCorp | Registro ejercicios</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+
+<body id="content_app">
+
+
+        <div class="container-fluid">
+    
+            <div class="text-left p-5 m-5">
+
+
+                <h4>BUSCAR EJERCICIOS </h4>
+
+                    <div class="input-group mb-3">
+                        
+                        <select class="form-control" id="cmb_tipo_grupo_ejercicios_buscar">
+                            <option value="0">seleccionar</option>
+                            <option value="1">Piernas</option>
+                            <option value="2">Brazos</option>
+                            <option value="3">Espalda</option>
+                        </select>
+        
+                        <input type="text" class="form-control" placeholder="Ingresar nombre del ejercicio"  aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                          <button class="btn_accion" type="button">Buscar</button>
+                        </div>
+        
+                    </div>
+    
+                <div class="row mt-5">
+                    
+                    <h4>REGISTRO DE EJERCICIOS </h4>
+                    <div class="col-sm-6">
+                          
+                        <label id="tipo_grupo_ejercicios">Grupo muscular</label>
+                        <select class="form-control" id="cmb_tipo_grupo_ejercicios">
+                            <option value="0">seleccionar</option>
+                            <option value="1">Piernas</option>
+                            <option value="2">Brazos</option>
+                            <option value="3">Espalda</option>                            
+                        </select>                        
+
+                        <div>
+                            <label id="lbl_nombre">Nombre</label>
+                            <input class="form-control" type="text" name="nombre_ejercicios"  id="nombre_ejercicios" placeholder="Ingrese el nombre del ejercicio" value="" > 
+                        </div>
+
+                        <div>
+                            <label id="lbl_nombre">Descripcion</label>
+                            <input class="form-control" type="textarea" zise="50" name="descripcion_ejercicios"  id="descripcion_ejercicios" placeholder="Breve Descripcion del ejercicio" value="" > 
+                        </div>
+
+                    </div>  
+    
+                </div>     
+                
+                <!-- BOTONES -->
+                <div class="mt-5">
+                    <button id="btn_registro" class=" btn_accion" onclick="registrar_ejercicio()">Guardar</button>
+
+                    
+                    <button id="btn_registro" class=" btn_accion" onclick="desactivar_ejercicio()">Desactivar</button>
+                    
+                    <button type="button" class=" btn_accion" onclick='location.href="inicio.html"'>Volver</button>
+
+                </div>
+
+    
+            </div>
+    
+        </div>    
+    
+</body>
+    
+    
+</html>

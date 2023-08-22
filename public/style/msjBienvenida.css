@@ -1,0 +1,35 @@
+
+html,
+body {
+  height: 100%;
+}
+
+#contenedor {       
+    
+    background-image: url("../images/Maximus1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;       
+    background-attachment: fixed ;
+
+    height: 100%;
+    width: 100%;
+
+}
+
+body {          
+ 
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px; 
+  
+ 
+
+}
+
+
+.welcome-screen {
+  text-align: center;
+  margin-top: 200px;
+  /* background-color:#3498DB;  */
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pantalla de Bienvenida</title>
+    <!-- no va aqui el estilo -->
+    <link rel="stylesheet" href="style/msjBienvenida.css"></link>
+</head>
+
+
+<style>
+    /* .welcome-screen {
+        text-align: center;
+        margin-top: 200px;
+        background-color:#3498DB; 
+    } */
+</style>
+
+<body>
+    
+    <!-- <div class="container-fluid">
+    
+         <img src="images/Maximus1.jpg" alt="" class="img-fluid mx-auto d-block"> -->
+
+    <div id="contenedor">
+        <div class="welcome-screen">
+            <h1>Bienvenido/a</h1>
+            <p>¡Gracias por registrarte!.</p>
+            <a href="index.html">Inicio</a>
+        </div>
+
+    </div>
+    
+
+    <script>
+        // Obtén el nombre de usuario del inicio de sesión
+        // Puedes obtenerlo desde tu backend o mediante el uso de cookies o almacenamiento local
+        var username = "Agustin Zuffolo";
+
+        // Actualiza el saludo de bienvenida con el nombre de usuario
+        var welcomeMessage = document.createElement("p");
+        welcomeMessage.innerHTML = "¡Hola, " + username + "! Bienvenido/a de nuevo.";
+        document.querySelector(".welcome-screen").appendChild(welcomeMessage);
+    </script>
+</body>
+</html>

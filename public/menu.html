@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style/estilos_gym.css">     </link>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>CapculeCorp | Principal</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<script>
+  function cargar_menu(pagina){
+    alert("cargar pagina:  " + pagina)
+      $('#escritorio').load(pagina);  
+    }
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="inicio.html">INICIO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" onclick="cargar_menu('registroAlumno.html')">prueba Alumnos </a> 
+                     
+        </li>
+        <li class="nav-item active">
+           <a class="nav-link" href="registroAlumno.html" >Alumnos </a>           
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registroEjercicios.html">Ejercicios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registroPlanes.html">Craer planes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="asigancionPlanes.html">Asignar planes</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            Salir
+        </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="usuarioPerfil.html">
+            <img src="images/avatar.png" alt="" class="icon_2">                                           
+        </a>
+        </li>
+        
+      </ul>
+    </div>
+
+  </nav>
+
+
+  <body id="content_app">
+
+    <div class="container-fluid"  id="escritorio">
+        <!-- cargamos el espacio de  de trabajo -->
+
+
+        <H1 class="text-center p-5 m-5">
+
+
+          CADA PAGINA DE TRABAJO 
+          
+        
+        
+        </H1>  
+        
+
+
+    </div>
+
+  </body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<!-- <script src = "funciones.js "></script> -->
